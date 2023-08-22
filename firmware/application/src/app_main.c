@@ -535,12 +535,18 @@ static void btn_fn_copy_ic_uid(void) {
             if (!is_reader_mode_now) {
                 tag_mode_enter();
             }
+
+            offline_status_ok();
         } else {
             if (!is_reader_mode_now) {
                 tag_mode_enter();
             }
+
+            offline_status_error();
         }
-    }
+    } else {
+        offline_status_error();
+	}
 
     switch(tag_type[0]) {
         case TAG_TYPE_MIFARE_Mini:
